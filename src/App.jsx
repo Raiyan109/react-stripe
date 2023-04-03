@@ -1,15 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Stripe from './components/Stripe'
+import panjabi from '../src/assets/panjabi.jpg'
+import { useState } from 'react'
+import Navbar from './components/Navbar'
 
 function App() {
-
+  const [showForm, setShowForm] = useState(false)
 
   return (
     <div className="App">
-      <Stripe />
+      <Navbar />
+      {
+        showForm
+          ?
+          <Stripe />
+          :
+          <>
+            <h3>$100.00</h3>
+            <img src={panjabi} />
+            <button onClick={() => setShowForm(true)}>BUY</button>
+          </>
+      }
     </div>
   )
 }
